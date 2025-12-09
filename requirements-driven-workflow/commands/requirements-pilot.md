@@ -282,4 +282,43 @@ Do you want to create test cases? (yes/no)
 - **User can always decline** - Respect user's decision to refine or cancel
 - **Quality over speed** - Ensure clarity before implementation
 - **Smart recommendations** - Provide context-aware testing suggestions
-- **Options are cumulative** - Multiple options can be combined (e.g., --skip-scan --skip-tests)
+
+---
+
+## 📝 Output Language Policy
+
+**IMPORTANT**: All generated documents (requirements-confirm.md, requirements-spec.md) should match the user's input language.
+
+### Language Detection for Requirements Documents
+- **Chinese input detected**: Generate Chinese documents
+  - Example triggers: 用户, 实现, 功能, 需求, 开发
+- **English input detected**: Generate English documents
+  - Example triggers: user, implement, feature, requirement, develop
+
+### Requirements-Confirm.md Language Format
+When the user inputs in Chinese, generate requirements-confirm.md in Chinese:
+```markdown
+# [功能名称] - 需求确认文档
+
+## 原始需求 (Original Request)
+用户希望实现 JWT 身份认证功能...
+
+## 仓库上下文影响 (Repository Context Impact)
+- 现有技术栈: FastAPI + PostgreSQL
+- 集成点: src/auth/ 目录
+
+## 澄清轮次 (Clarification Rounds)
+
+### 第1轮 - 质量评分: 65/100
+**问题**:
+1. 用户登录流程具体是怎样的？
+...
+```
+
+### Requirements-Spec.md Language Format
+Handled by requirements-generate agent (inherits language from requirements-confirm.md)
+
+### Technical Terms Consistency
+Keep these terms in English across all documents:
+API, REST, JWT, OAuth, PostgreSQL, Redis, HTTP, HTTPS, JSON,
+Docker, CI/CD, Git, branch, commit, pull request

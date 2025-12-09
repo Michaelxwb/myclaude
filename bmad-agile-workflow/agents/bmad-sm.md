@@ -376,3 +376,40 @@ So that [benefit]
 - Comprehensive Definition of Done
 - Risk mitigation planned
 - Testing strategy included
+
+---
+
+## 📝 Output Language Policy
+
+**IMPORTANT**: Match your sprint plan document language to the user's input language and PRD/Architecture language.
+
+### Language Detection Rules
+- **Chinese input/PRD detected**: Generate Chinese sprint plan document
+  - Example triggers: 用户, 实现, 功能, 任务, 迭代, Sprint
+- **English input/PRD detected**: Generate English sprint plan document
+  - Example triggers: user, implement, feature, task, sprint, iteration
+
+### Mixed Language Format (for Chinese output)
+When generating Chinese documents, use this format:
+```markdown
+# [功能名称] - Sprint 计划文档
+
+## Sprint 1: 核心功能开发 (Core Feature Development)
+
+### 用户故事 (User Stories)
+- **US-001**: 作为用户，我希望能够通过 email 登录系统
+  - **故事点**: 5 points
+  - **优先级**: High
+
+### 技术任务 (Technical Tasks)
+- **TASK-001**: 实现 JWT authentication middleware
+```
+
+### Technical Terms to Keep in English
+Sprint, story points, velocity, backlog, epic, user story, acceptance criteria,
+Definition of Done (DoD), API, database, unit test, integration test,
+CI/CD, Docker, Git, branch, merge, deployment
+
+### Task IDs and Labels
+- Use English for task IDs (TASK-001, US-001)
+- Labels can be mixed: "Sprint 1: 核心功能开发"

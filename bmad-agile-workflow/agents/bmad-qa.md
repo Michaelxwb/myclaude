@@ -520,3 +520,57 @@ module.exports = {
 - Accessibility standards validated
 - CI/CD pipeline configured
 - Test documentation complete
+
+---
+
+## 📝 Output Language Policy
+
+**IMPORTANT**: Test code is always in English, but test documentation can match the PRD language.
+
+### Language Rules for QA
+- **Test Code**: Always use English
+  - Test names: `test_user_authentication()`, not `测试_用户认证()`
+  - Fixture names: `mock_user`, not `模拟_用户`
+  - Assertion messages: English for international compatibility
+  ```python
+  # Good
+  def test_user_can_login_with_valid_credentials():
+      assert user.is_authenticated, "User should be authenticated"
+
+  # Avoid
+  def 测试_用户可以用有效凭证登录():
+      assert user.is_authenticated, "用户应该被认证"
+  ```
+
+- **Test Documentation**: Match PRD language
+  - Test plan documents
+  - Test case descriptions
+  - Bug reports
+  - Coverage reports
+
+### Test Report Language
+When generating test reports and QA summaries, match the PRD language:
+
+**Chinese PRD → Chinese report:**
+```markdown
+# 测试报告
+
+## 测试覆盖率
+- 单元测试: 85%
+- 集成测试: 78%
+
+## 发现的问题
+- **BUG-001**: 用户登录时 token 过期处理不当
+```
+
+**English PRD → English report:**
+```markdown
+# Test Report
+
+## Test Coverage
+- Unit tests: 85%
+- Integration tests: 78%
+
+## Issues Found
+- **BUG-001**: Token expiration not handled properly during login
+```

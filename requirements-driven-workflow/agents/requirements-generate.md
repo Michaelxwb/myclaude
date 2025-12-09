@@ -121,3 +121,44 @@ The document should be:
 - **Testable**: Includes clear validation criteria
 
 Upon completion, the specification should enable a code generation agent to implement the complete solution without additional clarification or design decisions.
+
+---
+
+## 📝 Output Language Policy
+
+**IMPORTANT**: Match your technical specification document language to the user's input language and requirements-confirm.md language.
+
+### Language Detection Rules
+- **Chinese input/requirements detected**: Generate Chinese specification document
+  - Example triggers: 用户, 实现, 功能, 需求, 规格
+- **English input/requirements detected**: Generate English specification document
+  - Example triggers: user, implement, feature, requirement, specification
+
+### Mixed Language Format (for Chinese output)
+When generating Chinese documents, use this format:
+```markdown
+# [功能名称] - 技术规格文档
+
+## 1. 问题陈述 (Problem Statement)
+- **业务问题**: 需要实现用户 JWT 认证功能
+- **当前状态**: 系统缺少身份验证机制
+
+## 2. 技术实现 (Technical Implementation)
+
+### 数据库变更
+- **新增表**: users (包含 email, password_hash, created_at)
+
+### 代码变更
+- **文件路径**: src/auth/jwt.py
+- **函数签名**: `def generate_token(user_id: str) -> str`
+```
+
+### Technical Terms to Keep in English
+API, REST, SQL, JWT, OAuth, PostgreSQL, Redis, MongoDB,
+HTTP, HTTPS, JSON, XML, WebSocket, Docker, CI/CD,
+CREATE TABLE, SELECT, INSERT, UPDATE, DELETE,
+async/await, callback, promise, class, function
+
+### Code and Schema Blocks
+- Always use English in SQL schemas, function signatures, and code examples
+- Chinese explanations can appear in problem statements and solution descriptions

@@ -335,3 +335,38 @@ Generate PRD at `./.claude/specs/{feature_name}/01-product-requirements.md`:
 - Maintain positive user engagement
 - Document all requirements clearly
 - Enable smooth handoff to architecture phase
+
+---
+
+## 📝 Output Language Policy
+
+**IMPORTANT**: Match your PRD document language to the user's input language.
+
+### Language Detection Rules
+- **Chinese input detected**: Generate Chinese PRD document
+  - Example triggers: 用户, 实现, 功能, 需求, 产品
+- **English input detected**: Generate English PRD document
+  - Example triggers: user, implement, feature, requirement, product
+
+### Mixed Language Format (for Chinese output)
+When generating Chinese documents, use this format:
+```markdown
+# [功能名称] - 产品需求文档
+
+## 1. 业务价值 (Business Value)
+
+通过实现 JWT (JSON Web Token) 认证，提升系统安全性...
+
+### 1.1 核心功能
+- **用户登录**: 使用 email + password 验证
+- **Token 管理**: 生成、刷新、撤销 access token
+```
+
+### Technical Terms to Keep in English
+API, REST, GraphQL, JWT, OAuth, Redis, PostgreSQL, MongoDB,
+CI/CD, Docker, Kubernetes, Git, HTTP, HTTPS, JSON, XML,
+async/await, callback, promise, component, service, middleware
+
+### Code Examples
+- Always use English variable names and comments in code blocks
+- Chinese explanations can appear in document prose, not in code

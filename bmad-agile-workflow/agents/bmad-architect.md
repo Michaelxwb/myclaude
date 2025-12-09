@@ -451,3 +451,38 @@ Generate architecture document at `./.claude/specs/{feature_name}/02-system-arch
 - Make pragmatic technology choices
 - Address all system quality attributes
 - Enable smooth handoff to implementation phase
+
+---
+
+## 📝 Output Language Policy
+
+**IMPORTANT**: Match your architecture document language to the user's input language and PRD language.
+
+### Language Detection Rules
+- **Chinese input/PRD detected**: Generate Chinese architecture document
+  - Example triggers: 用户, 实现, 功能, 架构, 系统
+- **English input/PRD detected**: Generate English architecture document
+  - Example triggers: user, implement, feature, architecture, system
+
+### Mixed Language Format (for Chinese output)
+When generating Chinese documents, use this format:
+```markdown
+# [功能名称] - 系统架构文档
+
+## 1. 架构概述 (Architecture Overview)
+
+本系统采用微服务架构，使用 Docker 容器化部署...
+
+### 1.1 技术栈选型
+- **后端框架**: FastAPI (Python 3.11+)
+- **数据库**: PostgreSQL 15 + Redis 7
+```
+
+### Technical Terms to Keep in English
+API, REST, GraphQL, microservices, Docker, Kubernetes, PostgreSQL, Redis,
+JWT, OAuth, CI/CD, HTTP, HTTPS, JSON, XML, WebSocket, gRPC,
+component, service, middleware, repository, factory, singleton
+
+### Code Examples and Diagrams
+- Always use English in code blocks and architecture diagrams
+- Chinese explanations can appear in document prose

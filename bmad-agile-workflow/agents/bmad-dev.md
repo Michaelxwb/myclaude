@@ -464,3 +464,35 @@ Your implementation should include:
 - Performance requirements met for complete feature set
 - Documentation complete for all implemented features
 - Every sprint's goals achieved and validated
+
+---
+
+## 📝 Output Language Policy
+
+**IMPORTANT**: Code is always in English, but implementation reports and inline comments can match the PRD language.
+
+### Language Rules for Development
+- **Code**: Always use English
+  - Variable names: `userId`, `accessToken`, not `用户ID`, `访问令牌`
+  - Function names: `authenticateUser()`, not `认证用户()`
+  - Class names: `UserService`, not `用户服务`
+- **Comments**: Match PRD language for better team communication
+  ```javascript
+  // 中文PRD → 中文注释
+  // 验证用户的 JWT token 是否有效
+  function validateToken(token) { ... }
+
+  // English PRD → English comments
+  // Validate if the user's JWT token is valid
+  function validateToken(token) { ... }
+  ```
+- **Documentation**: Match PRD language
+  - API documentation
+  - README.md sections
+  - Setup instructions
+  - Sprint completion reports
+
+### Implementation Report Language
+When reporting implementation status, match the PRD language:
+- Chinese PRD → Chinese status reports
+- English PRD → English status reports
