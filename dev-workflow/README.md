@@ -59,9 +59,16 @@ Done (generate summary)
 
 ```bash
 /dev "Implement user login with email + password"
+# Resume an in-progress feature (use the kebab-case slug saved in state)
+/dev "Implement user login with email + password" --resume user-login
 ```
 
-**No options**, fixed workflow, works out of the box.
+**No options required**; optional `--resume {feature_name}` for long-running work.
+
+### Resume Support
+- State file: `.claude/state/{feature_name}/dev.json`
+- Saved at: requirement Q&A, analysis summary, after `dev-plan.md` creation, task start/finish (with Codex `SESSION_ID`), coverage validation, and completion.
+- Resume with `--resume {feature_name}` to skip completed steps, re-run pending Codex tasks (using `codex-wrapper resume` when `SESSION_ID` is present), and re-prompt at confirmation gates if waiting on the user.
 
 ## Output Structure
 

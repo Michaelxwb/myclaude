@@ -34,6 +34,9 @@ BMAD is an enterprise-grade agile development methodology that transforms your d
 /bmad-pilot "Build e-commerce checkout system with payment integration"
 
 # Workflow: PO → Architect → SM → Dev → Review → QA
+
+# Resume an in-progress feature (feature_name is kebab-case)
+/bmad-pilot "Build e-commerce checkout system with payment integration" --resume e-commerce-checkout-system
 ```
 
 ### Command Options
@@ -47,6 +50,9 @@ BMAD is an enterprise-grade agile development methodology that transforms your d
 
 # Skip repository scan (not recommended)
 /bmad-pilot "Add feature" --skip-scan
+
+# Resume from saved state
+/bmad-pilot "Add feature" --resume add-feature
 ```
 
 ### Individual Agent Usage
@@ -174,6 +180,12 @@ All documents are saved to `.claude/specs/{feature-name}/`:
 ├── 04-dev-reviewed.md          # Code review (Review, Pass/Risk/Fail)
 └── 05-qa-report.md            # Test report (QA, tests executed)
 ```
+
+## ♻️ Resume Support
+- State file: `.claude/state/{feature-name}/bmad.json`
+- Saved at: phase completions, approval gates (PRD/Architecture/Sprint Plan → `waiting_user`), artifact writes (`00`–`05`), Codex task start/finish (with `codex_session`), and completion.
+- Resume with `--resume {feature-name}`: validates artifacts, jumps to recorded phase, re-prompts at pending gates, and uses `codex-wrapper resume <SESSION_ID>` for in-flight tasks (fallback to new session after two failures).
+- Atomic save: write temp then rename to avoid corruption; keep state after `done` for audit.
 
 Feature name generated from project description (kebab-case: lowercase, spaces/punctuation → `-`).
 

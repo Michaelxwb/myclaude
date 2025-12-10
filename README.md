@@ -33,6 +33,12 @@ python3 install.py --install-dir ~/.claude
 
 ## Workflows Overview
 
+### Resume Support (New)
+- `/dev`, `/bmad-pilot`, and `/requirements-pilot` can resume long-running work with `--resume <feature_slug>`.
+- State is saved per feature at `.claude/state/{feature_slug}/{workflow}.json` with artifacts, phase, step, Codex `SESSION_ID`s, and options.
+- Use `codex-wrapper resume <session_id>` to continue Codex tasks recorded in state.
+- See `docs/STATE-RESUME.md` for schema, save/resume rules, and cleanup guidance.
+
 ### 1. Dev Workflow (Recommended)
 
 **The primary workflow for most development tasks.**

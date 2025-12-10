@@ -26,6 +26,9 @@ Perfect for:
 # 2. Code implementation
 # 3. Code review
 # 4. Testing strategy
+
+# Resume an in-progress feature (feature-name is kebab-case)
+/requirements-pilot "Implement JWT authentication with refresh tokens" --resume jwt-authentication-with-refresh-tokens
 ```
 
 ### When to Use
@@ -108,6 +111,12 @@ Generated in `.claude/requirements/{feature-name}/`:
 ├── 03-review.md             # Code review report
 └── 04-testing.md            # Test strategy and results
 ```
+
+## ♻️ Resume Support
+- State file: `.claude/state/{feature-name}/requirements.json`
+- Saved at: phase completions, approval gate for requirements (set `waiting_user`), artifact writes (`01`–`04`), Codex task start/finish (with `codex_session`), and completion.
+- Resume with `--resume {feature-name}`: validates artifacts, jumps to recorded phase, re-prompts at the pending approval gate, and uses `codex-wrapper resume <SESSION_ID>` for in-flight tasks (fallback to new session after two failures).
+- Atomic save: write temp then rename; retain state after `done` for audit.
 
 ## 🔧 Command Options
 
